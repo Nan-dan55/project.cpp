@@ -45,26 +45,29 @@ int main()
             truth2=txt;
         }    
     }
-    for(int i=0;i<=max(t1,l);i++)
-    {
-        getline(lies,txt);
+   for (int i = 0; i <= max(t1, l); i++) {
+    getline(lies, txt);
+    if (i == l) {
+        lie = txt;  
     }
+}
+
 
     int bullet=1;
     int liechecker;
     for(int i=0;i<=max(t1,t2);i++)
     {
-        if (i==t1)
-        {
+         if (i==t1){
+        
             cout<<bullet<<". "<<truth1<<endl;
             bullet++;
-        }
-        else if(i==t2)
+         }
+         else if(i==t2)
         {
             cout<<bullet<<". "<<truth2<<endl;
             bullet++;
         }
-        else if(i==l)
+           if(i==l)
         {
             cout<<bullet<<". "<<lie<<endl;
             liechecker=bullet;
@@ -72,16 +75,90 @@ int main()
         }   
     }
     int number;
-    cout<<"Enter the lie u think is";
+    cout<<"Enter the lie u think is"<<endl;
     cin>>number;
     if(number==liechecker)
     {
-        cout<<"woahhh thats RIGHT";
+        cout<<"woahhh thats RIGHT"<<endl;
     }
     else
     {
-        cout<<"U missed it, The lie is "<<lie<<endl;
-        cout<<"BETTER LUCK NEXT TIME";
+        cout<<"U missed it, The lie is >> "<<lie<<endl;
+        cout<<"BETTER LUCK NEXT TIME"<<endl;
+    }
+
+    char choice;
+    cout<<"Do u wanna play this again 'y' or 'n' "<<endl;
+    cin>>choice;
+    while(choice=='y'||choice=='Y'){
+            srand(time(0));
+    int t1=0,t2=0,l=0;
+    t1=rand()%tru_count;
+    t2=rand()%tru_count;
+    l=rand()%lie_count;
+
+    ifstream truths("truths.txt");
+    ifstream lies("lie.txt");
+
+    string truth1, truth2, lie;
+    for(int i=0;i<=max(t1,t2);i++)
+    {
+        string txt;
+        getline(truths,txt);
+        if (i==t1)
+        {
+            truth1=txt;
+        }
+        else if(i==t2)
+        {
+            truth2=txt;
+        }    
+    }
+   for (int i = 0; i <= max(t1, l); i++) {
+    getline(lies, txt);
+    if (i == l) {
+        lie = txt;  
+    }
+}
+
+
+    int bullet=1;
+    int liechecker;
+    for(int i=0;i<=max(t1,t2);i++)
+    {
+         if (i==t1){
+        
+            cout<<bullet<<". "<<truth1<<endl;
+            bullet++;
+         }
+         else if(i==t2)
+        {
+            cout<<bullet<<". "<<truth2<<endl;
+            bullet++;
+        }
+           if(i==l)
+        {
+            cout<<bullet<<". "<<lie<<endl;
+            liechecker=bullet;
+            bullet++;
+        }   
+    }
+    int number;
+    cout<<"Enter the lie u think is"<<endl;
+    cin>>number;
+    if(number==liechecker)
+    {
+        cout<<"woahhh thats RIGHT"<<endl;
+    }
+    else
+    {
+        cout<<"U missed it, The lie is >> "<<lie<<endl;
+        cout<<"BETTER LUCK NEXT TIME"<<endl;
+    }
+     cout<<"Do u wanna play this again 'y' or 'n' "<<endl;
+    cin>>choice;
+
+
     }
     return 0;
 }
